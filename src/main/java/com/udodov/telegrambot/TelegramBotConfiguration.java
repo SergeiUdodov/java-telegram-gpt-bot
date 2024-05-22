@@ -1,5 +1,6 @@
 package com.udodov.telegrambot;
 
+import com.udodov.telegrambot.openai.OpenAiClient;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +14,11 @@ public class TelegramBotConfiguration {
 
     @Bean
     @SneakyThrows
-    public TelegramBot telegramBot(@Value("${bot.token}") String botToken, TelegramBotsApi telegramBotsApi) {
-        DefaultBotOptions botOptions = new DefaultBotOptions();
-        TelegramBot bot = new TelegramBot(botOptions, botToken);
+    public TelegramBot telegramBot(@Value("${bot.token}") String botToken,
+                                   TelegramBotsApi telegramBotsApi,
+                                   OpenAiClient openAiClient) {
+        var botOptions = new DefaultBotOptions();
+        var bot = new TelegramBot(botOptions, botToken, openAiClient);
         telegramBotsApi.registerBot(bot);
         return bot;
     }
