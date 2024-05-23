@@ -14,7 +14,7 @@
 	<name>telegram-bot</name>
 	<description>Telegram bot for chat-gpt</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,7 +34,6 @@
 			<version>1.18.32</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots</artifactId>
